@@ -1,7 +1,6 @@
  # TODO types of jokes: knock-knock, pun, q and a, tongue twisters
 # FUN write(e.g. "Home", move=False, align='left', font=(fontname, fontsize, fonttype))
 """
-Q. 2 "What do you call a shy lamb?" A. "Baaash-ful."
 Q. 3 "Why did cavemen draw pictures of hippopotamuses and rhionceroses on their wall?" A. "Because they couldn't spell the animals\' names."
 Q. 4 "On what nuts can pictures hang on?" A. "Wall-nuts."
 Q. 5 "What happened when 500 hares get loose in the center of town?" A. "The police had to comb the area."
@@ -36,13 +35,15 @@ Qjokes = [
     "What do you call a cow with a twitch?",#3
     "What do you get when you say \"tornado\" ten times forwards and backwards?",#4
     "How are two banana peels like shoes?",#5
+    "What do you call a shy lamb?",#6
 ]
 Ajokes = [
     "Because he was outstanding in his field!",#1
     "An impasta!",#2
     "A milk shake!",#3
     "A real tongue twister!",#4
-    "They're pair of slippers."#5
+    "They're pair of slippers.",#5
+    "Baaash-ful",#6
 ]
 
 
