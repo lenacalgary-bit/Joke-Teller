@@ -15,6 +15,8 @@ pen.speed(0)
 
 buttons = []
 current_screen = "home"
+knock_knock_lines = []
+knock_knock_step = 0
 
 # Jokes
 Qjokes = [
@@ -62,6 +64,14 @@ Ajokes = [
     "I'm stuck on you!",#19
     "A bee flying backwards.",#20
     "Lanuch meat!",#21
+]
+
+KnockKnockJokes = [
+    "Knock knock.\nWho's there?\nLettuce.\nLettuce who?\nLettuce in, it's cold out here!",
+    "Knock knock.\nWho's there?\nBoo.\nBoo who?\nAww why are you crying?",
+    "Knock knock.\nWho's there?\nTank.\nTank who?\nYou're welcome!",
+    "Knock knock.\nWho's there?\nCow go.\nCow go who?\nNo silly, cow go moooo!",
+    "Knock knock.\nWho's there?\nHunch.\nHunch who?\nBless you!",
 ]
 
 
@@ -112,8 +122,10 @@ def show_home_screen():
     pen.write("Joke Teller", align="center", font=("Arial", 60, "bold"))
 
     buttons.clear()
-    buttons.append(Button(-150, -50, 220, 60, "Tell Me a Joke", "lightblue", tell_joke))
-    buttons.append(Button(150, -50, 120, 60, "Exit", "lightcoral", exit_app))
+    buttons.append(Button(0, 70, 220, 60, "Tell Me a Joke", "lightblue", tell_random_joke))
+    buttons.append(Button(-130, -50, 180, 60, "Knock, Knock", "lightgreen", tell_knock_knock))
+    buttons.append(Button(0, -170, 120, 60, "Exit", "lightcoral", exit_app))
+    buttons.append(Button(130,-50, 180, 60, "Q & A Jokes", "lightyellow", tell_QA))
 
     for button in buttons:
         button.draw()
@@ -121,7 +133,7 @@ def show_home_screen():
     screen.update()
 
 
-def tell_joke():
+def tell_QA():
     global current_screen
     current_screen = "joke"
     pen.clear()
@@ -129,16 +141,62 @@ def tell_joke():
     pen.speed(0)
 
     index = r.randint(0, len(Qjokes) - 1)
+    draw_joke(Qjokes[index], Ajokes[index])
 
+
+def tell_random_joke():
+    r.choice([tell_QA, tell_knock_knock])()
+
+
+def tell_knock_knock():
+    global current_screen, knock_knock_lines, knock_knock_step
+    current_screen = "knock_knock"
+    pen.clear()
+    pen.hideturtle()
+    pen.speed(0)
+
+    index = r.randint(0, len(KnockKnockJokes) - 1)
+    knock_knock_lines = KnockKnockJokes[index].splitlines()
+    knock_knock_step = 0
+    show_knock_knock_line()
+
+
+def show_knock_knock_line():
+    pen.clear()
     pen.penup()
     pen.goto(0, 80)
     pen.color("black")
-    pen.write(Qjokes[index], align="center", font=("Arial", 20, "bold"))
+    pen.write(
+        knock_knock_lines[knock_knock_step],
+        align="center",
+        font=("Arial", 24, "bold"),
+    )
 
-    pen.goto(0, 20)
-    pen.write(Ajokes[index], align="center", font=("Arial", 18))
+    pen.goto(0, -180)
+    if knock_knock_step == len(knock_knock_lines) - 1:
+        message = "Click anywhere to return home"
+    else:
+        message = "Click anywhere to continue"
+    pen.write(message, align="center", font=("Arial", 14))
+    screen.update()
 
-    pen.goto(0, -80)
+
+def draw_joke(question, answer):
+    lines = question.splitlines() + ["", answer]
+    start_y = (len(lines) - 1) * 20 / 2
+
+    pen.color("black")
+    for line_number, line in enumerate(lines):
+        pen.penup()
+        pen.goto(0, start_y - line_number * 40)
+        pen.write(
+            line,
+            align="center",
+            font=("Arial", 20 if line_number == len(lines) - 1 else 18, "bold"),
+        )
+
+    pen.penup()
+    pen.goto(0, -180)
     pen.write("Click anywhere to go back", align="center", font=("Arial", 14))
 
     screen.update()
@@ -154,6 +212,13 @@ def handle_click(x, y):
             if button.contains(x, y):
                 button.callback()
                 return
+    elif current_screen == "knock_knock":
+        global knock_knock_step
+        if knock_knock_step < len(knock_knock_lines) - 1:
+            knock_knock_step += 1
+            show_knock_knock_line()
+        else:
+            show_home_screen()
     else:
         show_home_screen()
 
