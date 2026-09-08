@@ -34,7 +34,11 @@ Qjokes = [
     "What paces back and forth on the ocean floor?",#14
     "What goes thump, thump, thump, squish, thump, thump, thump, squish?",#15
     "When is a baseball player like a spider?",#16
-    "What kind of a fish goes best with peanut butter?"#17
+    "What kind of a fish goes best with peanut butter?",#17
+    "What did the beach say when the tide came in?",#18
+    "What did the chewing gum say to the shoe?",#19
+    "What goes zzub zzub?",#20
+    "What is in an astronaut's favorite sandwich?",#21
 ]
 Ajokes = [
     "Because he was outstanding in his field!",#1
@@ -54,6 +58,10 @@ Ajokes = [
     "An elephant with one wet shoe.",#15
     "When he catches a fly.",#16
     "Jelly-fish.",#17
+    "Long time, no sea.",#18
+    "I'm stuck on you!",#19
+    "A bee flying backwards.",#20
+    "Lanuch meat!",#21
 ]
 
 
