@@ -42,6 +42,7 @@ Qjokes = [
     "What goes zzub zzub?",#20
     "What is in an astronaut's favorite sandwich?",#21
 ]
+
 Ajokes = [
     "Because he was outstanding in his field!",#1
     "An impasta!",#2
@@ -72,8 +73,32 @@ KnockKnockJokes = [
     "Knock knock.\nWho's there?\nTank.\nTank who?\nYou're welcome!",
     "Knock knock.\nWho's there?\nCow go.\nCow go who?\nNo silly, cow go moooo!",
     "Knock knock.\nWho's there?\nHunch.\nHunch who?\nBless you!",
+    "Knock knock.\nWho's there?\nBen.\nBen who?\nBen knocking on the door all afternoon!",
+    "Knock knock.\nWho's there?\nPasture.\nPasture who?\nPasture bed time, isn't it?",
+    "Knock knock.\nWho's there?\nLena.\nLena who?\nLena little closer and I'll tell you.",
+    "Knock knock.\nWho's there?\nEwan.\nEwan who?\nIt's just me.",
+    "Knock knock.\nWho's there?\nNobel.\nNobel who?\nNobel, that's why I knocked!",
+    "Knock knock.\nWho's there?\nNuisance.\nNuisance who?\nWhat's nuisance yesterday?",
+    "Knock knock.\nWho's there?\nCash.\nCash who?\nNo thanks, I prefer peanuts.",
+    "Knock knock.\nWho's there?\nHugo.\nHugo who?\nHugo-ing to let me in or not?",
+    "Knock knock.\nWho's there?\nDoris.\nDoris who?\nDoris locked, let me in!",
+    "Knock knock.\nWho's there?\nAlison.\nAlison who?\nAlison to you after you listen to me.",
+    "Knock knock.\nWho's there?\nKent.\nKent who?\nKent you tell who it is?",
+    "Knock knock.\nWho's there?\nBen.\nBen who?\nBen knocking on the door all afternoon!",
+    "Knock knock.\nWho's there?\nHavana.\nHavana who?\nHavana a wonderful time. Wish you were here!",
+    "Knock knock.\nWho's there?\nOlive.\nOlive who?\nOlive you!",
+    "Knock knock.\nWho's there?\nDinosaur.\nDinosaur who?\nDinosaur because he fell down!",
+    "Knock knock.\nWho's there?\nHarry.\nHarry who?\nHarry up and answer the door!",
+    "Knock knock.\nWho's there?\nIce cream.\nIce cream who?\nIce cream every time I see a scary movie!",
+    "Knock knock.\nWho's there?\nAdair.\nAdair who?\nAdair once, but now I'm bald.",
+    "Knock knock.\nWho's there?\nHuron.\nHuron who?\nHuron my toe. Could you please get off it?",
+    "Knock knock.\nWho's there?\nHawaii.\nHawaii who?\nI'm good. Hawaii you?",
+    "Knock knock.\nWho's there?\nThumping.\nThumping who?\nThumping just just crawled up your leg.",
+    "Knock knock.\nWho's there?\nAnnie.\nAnnie who?\nAnnie body home?",
+    "Knock knock.\nWho's there?\nKenya.\nKenya who?\nKenya guess who it is?",
+    "Knock knock.\nWho's there?\nD1.\nD1 who?\nD1 who knocked.",
+    "Knock knock.\nWho's there?\nDistressing.\nDistressing who?\nDistressing has too much vinegar!",
 ]
-
 
 class Button:
     def __init__(self, x, y, width, height, text, color, callback):
