@@ -98,6 +98,43 @@ KnockKnockJokes = [
     "Knock knock.\nWho's there?\nKenya.\nKenya who?\nKenya guess who it is?",
     "Knock knock.\nWho's there?\nD1.\nD1 who?\nD1 who knocked.",
     "Knock knock.\nWho's there?\nDistressing.\nDistressing who?\nDistressing has too much vinegar!",
+    "Knock knock.\nWho's there?\nScold.\nScold who?\nScold out here!",
+    "Knock knock.\nWho's there?\nWoo.\nWoo who?\nDon't get too excited--it's just a joke.",
+    "Knock knock.\nWho's there?\nDewey.\nDewey who?\nDewey have to keep hearing all these jokes?",
+    "Knock knock.\nWho's there?\nHowl.\nHowl who?\nHowl I get in if you don't open the door?",
+]
+
+TongueTwisterssay3x = [
+    "Rolling red wagons race wildly down roads.",
+    "Cooks cook cupcakes quickly.",
+    "Jolly juggling jesters juggle jingle jacks.",
+    "Nat the bat ate Pat the gnat.",
+    "Quick kiss, quicker kiss.",
+    "A moose noshes much mush.",
+    "A proper copper coffee pot.",
+    "Comical cactus curls rural wind.",
+    "Six slippery snails slid slowly seaward.",
+    "Patty pickes pretty papper packages.",
+    "An ape hates grapes.",
+    "A big black bug bit a big black bear.",
+    "A tiny tiger thinks tough thoughts.",
+    "Brenda's bunny baked buttered bread.",
+    "Sly Sam slurps Sally's soup.",
+    "See Sep slip.",
+    "Are our oars oak?",
+    "Susie sailed the seven seas.",
+    "Which wristwatch is a Swiss wristwatch?",
+    "Ten tricky two-toed turkeys trotted.",
+    "She freed six sheep.",
+    "She shouldn't shake the salt shakers, should she?",
+    "Six silly sisters sort short socks.",
+    "Girl gargoyle, guy gargoyle.",
+    "Red bulb, blue bulb.",
+    "Trained turtles trotted to the track.",
+    "At eight Edgar ate eight eggs.",
+    "Six smart sharks swam swiftly.",
+    "Double bubble gum bubbles double.",
+    "see me sneak in my squeaky, reeking sneakers.",
 ]
 
 class Button:
@@ -147,10 +184,11 @@ def show_home_screen():
     pen.write("Joke Teller", align="center", font=("Arial", 60, "bold"))
 
     buttons.clear()
-    buttons.append(Button(0, 70, 220, 60, "Tell Me a Joke", "lightblue", tell_random_joke))
+    buttons.append(Button(0, 70, 190, 60, "Tell Me a Joke", "lightblue", tell_random_joke))
     buttons.append(Button(-130, -50, 180, 60, "Knock, Knock", "lightgreen", tell_knock_knock))
-    buttons.append(Button(0, -170, 120, 60, "Exit", "lightcoral", exit_app))
-    buttons.append(Button(130,-50, 180, 60, "Q & A Jokes", "lightyellow", tell_QA))
+    buttons.append(Button(0, -290, 120, 60, "Exit", "lightcoral", exit_app))
+    buttons.append(Button(130,-50, 170, 60, "Q & A Jokes", "lightyellow", tell_QA))
+    buttons.append(Button(0, -170, 190, 60, "Tongue Twisters", "lightpink", tell_tongue_twister))
 
     for button in buttons:
         button.draw()
@@ -170,7 +208,7 @@ def tell_QA():
 
 
 def tell_random_joke():
-    r.choice([tell_QA, tell_knock_knock])()
+    r.choice([tell_QA, tell_knock_knock, tell_tongue_twister])()
 
 
 def tell_knock_knock():
@@ -185,6 +223,19 @@ def tell_knock_knock():
     knock_knock_step = 0
     show_knock_knock_line()
 
+def tell_tongue_twister():
+    global current_screen
+    current_screen = "tongue_twister"
+    pen.clear()
+    pen.hideturtle()
+    pen.speed(0)
+
+    index = r.randint(0, len(TongueTwisterssay3x) - 1)
+    draw_joke(TongueTwisterssay3x[index], "")
+    pen.pu()
+    pen.goto(0, 180)
+    pen.write("Say it 3 times fast!", align="center", font=("Arial", 16, "bold"))
+
 
 def show_knock_knock_line():
     pen.clear()
@@ -196,13 +247,6 @@ def show_knock_knock_line():
         align="center",
         font=("Arial", 24, "bold"),
     )
-
-    pen.goto(0, -180)
-    if knock_knock_step == len(knock_knock_lines) - 1:
-        message = "Click anywhere to return home"
-    else:
-        message = "Click anywhere to continue"
-    pen.write(message, align="center", font=("Arial", 14))
     screen.update()
 
 
@@ -219,10 +263,6 @@ def draw_joke(question, answer):
             align="center",
             font=("Arial", 20 if line_number == len(lines) - 1 else 18, "bold"),
         )
-
-    pen.penup()
-    pen.goto(0, -180)
-    pen.write("Click anywhere to go back", align="center", font=("Arial", 14))
 
     screen.update()
 
