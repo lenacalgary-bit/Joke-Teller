@@ -102,6 +102,10 @@ KnockKnockJokes = [
     "Knock knock.\nWho's there?\nWoo.\nWoo who?\nDon't get too excited--it's just a joke.",
     "Knock knock.\nWho's there?\nDewey.\nDewey who?\nDewey have to keep hearing all these jokes?",
     "Knock knock.\nWho's there?\nHowl.\nHowl who?\nHowl I get in if you don't open the door?",
+    "Knock knock.\nWho's there?\nWaddle.\nWaddle who?\nWaddle I do if you don't open the door.",
+    "Knock knock.\nWho's there?\nCook.\nCook who?\nHey! Who are you calling a cuckoo?",
+    "Knock knock.\nWho's there?\nI won.\nI won who?\nI won to suck your blood.",
+    "Knock knock.\nWho's there?\nSnow.\nSnow who?\nSnow time for questions. Just let me in!",
 ]
 
 TongueTwisterssay3x = [
@@ -134,7 +138,22 @@ TongueTwisterssay3x = [
     "At eight Edgar ate eight eggs.",
     "Six smart sharks swam swiftly.",
     "Double bubble gum bubbles double.",
-    "see me sneak in my squeaky, reeking sneakers.",
+    "See me sneak in my squeaky, reeking sneakers.",
+    "Two twins twirled twelve tires.",
+    "If a black bug bleeds black blood, what color blood does a blue bug bleed?",
+    "Sally saw Shelley singing swimming songs.",
+    "I wish to wish the wish you wish to wish, but if you wish the wish the witch wishes, I won't wish the wish you wish to wish.",
+    "Two totally tired toads tripped.",
+    "Three free thoughtful seals.",
+    "Six slick sight seers click.",
+    "Six slippery snails slid slowly seaward.",
+    "The ocean sure soaked Sherman.",
+    "Katie's kittens caught Kyle's kite.",
+    "Three free throws.",
+    "A gazzillion gigantic grapes gushed gradually giving gophers gooey guts.",
+    "Felix finds fresh french fries finer.",
+    "Crisp crusts crakle and crunch.",
+    "Roscoe rescued Rosie from the roaring rapids.",
 ]
 
 class Button:
@@ -161,7 +180,8 @@ class Button:
             pen.right(90)
         pen.end_fill()
         pen.penup()
-        pen.goto(self.x, self.y - 10)
+        pen.goto(self.x, self.y - 13)
+
         pen.color("black")
         pen.write(self.text, align="center", font=("Arial", 16, "bold"))
 
@@ -184,11 +204,11 @@ def show_home_screen():
     pen.write("Joke Teller", align="center", font=("Arial", 60, "bold"))
 
     buttons.clear()
-    buttons.append(Button(0, 70, 190, 60, "Tell Me a Joke", "lightblue", tell_random_joke))
+    buttons.append(Button(0, 70, 170, 60, "Tell Me a Joke", "lightblue", tell_random_joke))
     buttons.append(Button(-130, -50, 180, 60, "Knock, Knock", "lightgreen", tell_knock_knock))
     buttons.append(Button(0, -290, 120, 60, "Exit", "lightcoral", exit_app))
     buttons.append(Button(130,-50, 170, 60, "Q & A Jokes", "lightyellow", tell_QA))
-    buttons.append(Button(0, -170, 190, 60, "Tongue Twisters", "lightpink", tell_tongue_twister))
+    buttons.append(Button(0, -170, 200, 60, "Tongue Twisters", "lightpink", tell_tongue_twister))
 
     for button in buttons:
         button.draw()
