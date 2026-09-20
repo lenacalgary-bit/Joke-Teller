@@ -12,11 +12,13 @@ screen.title('Joke Teller')
 screen.tracer(0)
 pen.hideturtle()
 pen.speed(0)
+screen.bgcolor("#d9fff6")
 
 buttons = []
 current_screen = "home"
 knock_knock_lines = []
 knock_knock_step = 0
+bclr = "#81dab8"
 
 # Jokes
 Qjokes = [
@@ -102,10 +104,11 @@ KnockKnockJokes = [
     "Knock knock.\nWho's there?\nWoo.\nWoo who?\nDon't get too excited--it's just a joke.",
     "Knock knock.\nWho's there?\nDewey.\nDewey who?\nDewey have to keep hearing all these jokes?",
     "Knock knock.\nWho's there?\nHowl.\nHowl who?\nHowl I get in if you don't open the door?",
-    "Knock knock.\nWho's there?\nWaddle.\nWaddle who?\nWaddle I do if you don't open the door.",
+    "Knock knock.\nWho's there?\nWaddle.\nWaddle who?\nWaddle I do if you don't open the door?",
     "Knock knock.\nWho's there?\nCook.\nCook who?\nHey! Who are you calling a cuckoo?",
     "Knock knock.\nWho's there?\nI won.\nI won who?\nI won to suck your blood.",
     "Knock knock.\nWho's there?\nSnow.\nSnow who?\nSnow time for questions. Just let me in!",
+    "Knock knock.\nWho's there?\nTwig.\nTwig who?\nTwig or treat!",
 ]
 
 TongueTwisterssay3x = [
@@ -156,6 +159,13 @@ TongueTwisterssay3x = [
     "Roscoe rescued Rosie from the roaring rapids.",
 ]
 
+Puns1text = [
+    "Shoes are required to eat in the cafeteria. Socks can eat anyplace they want.",
+    "I wondered why the baseball kept getting bigger. Then it hit me.",
+    "I am reading a book about anti-gravity. It is impossible to put down.",
+    "I only know 25 letters of the alphabet. I don't know y.",
+]
+
 class Button:
     def __init__(self, x, y, width, height, text, color, callback):
         self.x = x
@@ -191,7 +201,6 @@ class Button:
             and self.y - self.height / 2 <= y <= self.y + self.height / 2
         )
 
-
 def show_home_screen():
     global current_screen
     current_screen = "home"
@@ -204,17 +213,17 @@ def show_home_screen():
     pen.write("Joke Teller", align="center", font=("Arial", 60, "bold"))
 
     buttons.clear()
-    buttons.append(Button(0, 70, 170, 60, "Tell Me a Joke", "lightblue", tell_random_joke))
-    buttons.append(Button(-130, -50, 180, 60, "Knock, Knock", "lightgreen", tell_knock_knock))
-    buttons.append(Button(0, -290, 120, 60, "Exit", "lightcoral", exit_app))
-    buttons.append(Button(130,-50, 170, 60, "Q & A Jokes", "lightyellow", tell_QA))
-    buttons.append(Button(0, -170, 200, 60, "Tongue Twisters", "lightpink", tell_tongue_twister))
+    buttons.append(Button(0, 70, 170, 40, "Tell Me a Joke", "#a5bbe4", tell_random_joke))
+    buttons.append(Button(0, 10, 170, 40, "Knock, Knock", bclr, tell_knock_knock))
+    #buttons.append(Button(0, -290, 120, 40, "Exit", "lightcoral", screen.bye()))
+    buttons.append(Button(0,-110, 150, 40, "Q & A Jokes", bclr, tell_QA))
+    buttons.append(Button(0, -50, 190, 40, "Tongue Twisters", bclr, tell_tongue_twister))
+    buttons.append(Button(0, -170, 150, 40, "Puns", bclr, tell_pun))
 
     for button in buttons:
         button.draw()
 
     screen.update()
-
 
 def tell_QA():
     global current_screen
@@ -226,10 +235,8 @@ def tell_QA():
     index = r.randint(0, len(Qjokes) - 1)
     draw_joke(Qjokes[index], Ajokes[index])
 
-
 def tell_random_joke():
-    r.choice([tell_QA, tell_knock_knock, tell_tongue_twister])()
-
+    r.choice([tell_QA, tell_knock_knock, tell_tongue_twister, tell_pun])()
 
 def tell_knock_knock():
     global current_screen, knock_knock_lines, knock_knock_step
@@ -256,7 +263,6 @@ def tell_tongue_twister():
     pen.goto(0, 180)
     pen.write("Say it 3 times fast!", align="center", font=("Arial", 16, "bold"))
 
-
 def show_knock_knock_line():
     pen.clear()
     pen.penup()
@@ -269,6 +275,20 @@ def show_knock_knock_line():
     )
     screen.update()
 
+def tell_pun():
+    global current_screen
+    current_screen = "pun"
+    pen.clear()
+    pen.hideturtle()
+    pen.speed(0)
+
+    pun = r.choice(Puns1text)
+    draw_joke(pun, "")
+
+    pen.penup()
+    pen.goto(0, -180)
+    pen.write("Click anywhere for the home screen", align="center", font=("Arial", 14, "normal"))
+    screen.update()
 
 def draw_joke(question, answer):
     lines = question.splitlines() + ["", answer]
@@ -286,11 +306,6 @@ def draw_joke(question, answer):
 
     screen.update()
 
-
-def exit_app():
-    screen.bye()
-
-
 def handle_click(x, y):
     if current_screen == "home":
         for button in buttons:
@@ -306,7 +321,6 @@ def handle_click(x, y):
             show_home_screen()
     else:
         show_home_screen()
-
 
 screen.listen()
 screen.onclick(handle_click)
