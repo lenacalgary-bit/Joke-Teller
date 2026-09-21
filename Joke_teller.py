@@ -1,4 +1,3 @@
-# TODO types of jokes: knock-knock, pun, q and a, tongue twisters
 # FUN write(e.g. "Home", move=False, align='left', font=(fontname, fontsize, fonttype))
 
 # This is the start up
@@ -18,7 +17,7 @@ buttons = []
 current_screen = "home"
 knock_knock_lines = []
 knock_knock_step = 0
-bclr = "#81dab8"
+bclr = "#8acbff"
 
 # Jokes
 Qjokes = [
@@ -164,6 +163,10 @@ Puns1text = [
     "I wondered why the baseball kept getting bigger. Then it hit me.",
     "I am reading a book about anti-gravity. It is impossible to put down.",
     "I only know 25 letters of the alphabet. I don't know y.",
+    "Customer: Do you serve crabs?\nWaitress: Of course, sir. We serve anyone.",
+    "Doctor: You need new glasses.\nPatient: How do you know? I haven't told you what's wrong with me yet.\nDoctor: I could tell as soon as you walked in through the window.",
+    "Mother: Jay, let your brother have the sled half of the time!\nJay: I do, Mom. I have it going downhill and he has it going up."
+
 ]
 
 class Button:
@@ -213,7 +216,7 @@ def show_home_screen():
     pen.write("Joke Teller", align="center", font=("Arial", 60, "bold"))
 
     buttons.clear()
-    buttons.append(Button(0, 70, 170, 40, "Tell Me a Joke", "#a5bbe4", tell_random_joke))
+    buttons.append(Button(0, 70, 170, 40, "Tell Me a Joke",bclr, tell_random_joke))
     buttons.append(Button(0, 10, 170, 40, "Knock, Knock", bclr, tell_knock_knock))
     #buttons.append(Button(0, -290, 120, 40, "Exit", "lightcoral", screen.bye()))
     buttons.append(Button(0,-110, 150, 40, "Q & A Jokes", bclr, tell_QA))
