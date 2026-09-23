@@ -165,7 +165,9 @@ Puns1text = [
     "I only know 25 letters of the alphabet. I don't know y.",
     "Customer: Do you serve crabs?\nWaitress: Of course, sir. We serve anyone.",
     "Doctor: You need new glasses.\nPatient: How do you know? I haven't told you what's wrong with me yet.\nDoctor: I could tell as soon as you walked in through the window.",
-    "Mother: Jay, let your brother have the sled half of the time!\nJay: I do, Mom. I have it going downhill and he has it going up."
+    "Mother: Jay, let your brother have the sled half of the time!\nJay: I do, Mom. I have it going downhill and he has it going up.",
+    "Teacher: Why does the Statue of liberty stand in the New York harbor?\nStudent: Because it can't sit down.",
+    "Two snakes are talking.\nSnake 1: \"Are we venomous?\"\nSnake 2: \"Yes, why?\"\nSnake 1: \"I just bit my lip.\"",
 
 ]
 
@@ -289,8 +291,6 @@ def tell_pun():
     draw_joke(pun, "")
 
     pen.penup()
-    pen.goto(0, -180)
-    pen.write("Click anywhere for the home screen", align="center", font=("Arial", 14, "normal"))
     screen.update()
 
 def draw_joke(question, answer):
