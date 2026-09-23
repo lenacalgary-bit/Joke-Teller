@@ -13,6 +13,6 @@ A button that when clicked tells you a random joke
 Knock, Knock jokes                                                                                                                                                                                                             
 Question and Answer jokes                                                                                                                                                                                                      
 Tongue twisters                                                                                                                                                                                                                
-Puns
+Puns                                                                                                                                                                                                                            
 116 jokes in total
 --------------------------------------------------------------------------
